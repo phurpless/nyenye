@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Mevia's Birthday Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: url('https://raw.githubusercontent.com/phurpless/nyenye/main/background.png') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      padding: 20px;
+      color: #444;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5em;
+      color: #ff4081;
+      text-shadow: 1px 1px #fff;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #d81b60;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #5e5e5e;
+    }
+
+    .section {
+      display: none;
+      background: rgba(255, 255, 255, 0.95);
+      margin: 20px auto;
+      padding: 25px;
+      max-width: 700px;
+      border-radius: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    .active {
+      display: block;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      border: none;
+      background: linear-gradient(to right, #ff80ab, #ff4081);
+      color: white;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      box-shadow: 0 4px 10px rgba(255, 64, 129, 0.4);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #ff4081, #f06292);
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid #ff80ab;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .emoji-btn {
+      font-size: 30px;
+    }
+
+    .final {
+      font-size: 1.1em;
+      color: #d81b60;
+      margin-top: 20px;
+      text-align: left;
+      white-space: pre-line;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff0f5;
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<button id="playBtn" onclick="playMusic()">▶️ Play Musik</button>
+<audio id="bg-music" loop>
+  <source src="Taylor Swift - 22.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function playMusic() {
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('playBtn');
+    music.play();
+    btn.style.display = 'none';
+  }
+</script>
+
+<h1>💖 Mevia's Birthday Game 💖</h1>
+<p>AHAHHAHAHA SAYANGG HAII AKU PUNYA GAME BIAR NYENYE NANTI SUKA MAIN GAME KAYA ACUU </p>
+
+<!-- Game Sections -->
+<div class="section active" id="game1">
+  <h2>Game 1: Tebak Angka</h2>
+  <p>AWOWKWKWOW pokoknya ini angka sakral</p>
+  <input type="number" id="guess1" />
+  <button onclick="checkGuess()">Tebak!</button>
+  <div id="msg1"></div>
+</div>
+
+<div class="section" id="game2">
+  <h2>Game 2: Quiz Dikit</h2>
+  <p>iii sayangg di 21 tahun ini nantii nyenyee bakalan ngelewatii apaa cobaa?</p>
+  <button onclick="quiz(2, true)">nglewatin sidang skripsi</button>
+  <button onclick="quiz(2, false)">nglewatin muladi dome</button>
+  <button onclick="quiz(2, false)">nglewatin diskon shopee</button>
+  <div id="msg2"></div>
+</div>
+
+<div class="section" id="game3">
+  <h2>Game 3: Susun Kalimat</h2>
+  <p>coba bb pilih kalimat penyemangat yang paling benerr dehh</p>
+  <button onclick="quiz(3, true)">semangat sidang dan skripsiannyaa yaa nyenyekuu sayangg!💪</button>
+  <button onclick="quiz(3, false)">tidur yugg bebe hehehehe</button>
+  <button onclick="quiz(3, false)">iii ayokkk mainn sayanggg</button>
+  <div id="msg3"></div>
+</div>
+
+<div class="section" id="game4">
+  <h2>Game 4: Yang Bikin Nyenye Hebat</h2>
+  <p>hal yang bikin nyenye makin keren apa cobaa</p>
+  <button onclick="quiz(4, false)">scroll tikTok</button>
+  <button onclick="quiz(4, true)">nyenyee yang gapernah nyerah dan terus melangkah walaupun banyak rintangan 💖</button>
+  <button onclick="quiz(4, false)">mayah cama acuu awokwowkowkwo</button>
+  <div id="msg4"></div>
+</div>
+
+<div class="section" id="game5">
+  <h2>Game 5: Cocokkan Mood</h2>
+  <p>kira kira mood nyenyee setelah skripsi selesai gimanaa yaaa bb :D</p>
+  <button onclick="quiz(5, false)">😵</button>
+  <button onclick="quiz(5, true)">😎🎉</button>
+  <button onclick="quiz(5, false)">😭</button>
+  <div id="msg5"></div>
+</div>
+
+<div class="section" id="game6">
+  <h2>Game 6: Puzzle</h2>
+  <p>iii sayangg cobaa pilih urutan yang paling sweet yangg nyenyee pengenn dehh</p>
+  <button onclick="quiz(6, true)">lulus - wisuda - jadi kaya - menikah sama putro :p</button>
+  <button onclick="quiz(6, false)">nugas - nugas - nugas - nugas</button>
+  <div id="msg6"></div>
+</div>
+
+<div class="section" id="game7">
+  <h2>Game 7: Mo Tanya</h2>
+  <p>siapa yang bakalan selalu dukung nyenyee nantii?</p>
+  <button onclick="quiz(7, false)">dosen pembimbing</button>
+  <button onclick="quiz(7, true)">putro 💖</button>
+  <button onclick="quiz(7, false)">tabis</button>
+  <div id="msg7"></div>
+</div>
+
+<div class="section" id="game8">
+  <h2>Game 8: Mw Tanya Lg</h2>
+  <p>after skripsi selesai bb mw ap?</p>
+  <button onclick="quiz(8, false)">duit</button>
+  <button onclick="quiz(8, true)">pelukan sama putro</button>
+  <button onclick="quiz(8, false)">jajann</button>
+  <div id="msg8"></div>
+</div>
+
+<div class="section" id="game9">
+  <h2>Game 9: Coba Pencet</h2>
+  <p>AOWWKWOWKOWK PO</p>
+  <button onclick="nextGame()">mw liattt</button>
+</div>
+
+<div class="section" id="final">
+  <h2>💖 Bwat Nyenye 💖</h2>
+  <div class="final">
+    BIBUBBBBB SAYAANGG AWOWKWKWKWKW
+    SELAMAATT BERUMURR 21 YAA CANTIKKUU SAYAANGGGG NYENYEKUUUU CINTAKUUU!!!
+    MASYAALLAH KENAPA KAMUU CEPET BANGETT SIII BEBEE ULTAHNYAA😭😭😭
+    HAPPYYYY SAYANGGG🥺🥺🥺🤍🤍🤍
+    aaa setahunnn kebelakanggg acuu banyakk bikinn sayangg sedihh yaa?? 
+    tapiii gapapaa kokk cantikkk ituu yanggg ngebuaatt sayangg jadii setegarr inii sekarangg🥺🥺
+    soo prouuddd of uuu cintanyaa akuu!!!
+    semogaaa selaluuuu sehatt sertaa muliaa yaa sayanggg!!
+    semogaaa bebee diberii umurr panjangg biarr bisaa menikahh sama akuuu, semogaa sayangg cepettt banyak duitt biarr kitaa bisaa berbagi nantii yaa cantikkk??
+    semogaaa sayangg selaluu diberriii kelancarann dalamm hal apapun ituuu yaaa sayangnya akuuu🥺🥺
+    adaa atauuu engganya yangg ngehalangin bebee kedepannya akuu yakinn bebe bakalann selaluu bisa ngelewatin ituu semuaa sayaanggg🤗🤍
+    semangaatt terusss yaaa cantikkkkk buattt kuliahnyaaa! tinggall setaunnnn lagiii yaa hihihi🤗
+    itss okeeyyy sayaangg gaperluuu takutttt yaaaa??
+    adaaa acuuu disiniiii yangg bakalann selaluu nemeninn bebee selaluu bantuinn bebee nantii okeeyy?!
+    sayaanggg haruss selaluuu jadii lebihhh baikk dann carii panggilann bebee yaa cantikkkk!!
+    akuuu selaluuu sayaanggg samaa bubb selaluuu pengenn sama bubb selaluu pengen direpotinn samaa bebee sayanggg🥺🥺
+    semogaa kedepannyaa sayaangg lebihh dijauhinn dari orangg oranggg yangg anehh, yangg jahatt, orang yanggg kek "APASI DIA TU" gituuu yaaa bebeee🤗🤍
+    semogaaa jugaa sayangg setaunn kedepaannn bisaa selaluuu menerjangg orangg orangg yangg sepertii ituuu sayaanggg🥺🥺
+    akuuu disinii selaluuu doainnn dann bakalann tetepp usahainn yang terbaikk buaatt nyenyee okeeyyy?!
+    jangaann takuttt yaa sayaanggkuuu, bebeee haruss bisaa gapaaiii apaa yangg bebeee ingin, bebee gaperluuu paksain semuaa hall tapii yaa sayanggg??
+    disinii adaa akuu jugaa sayaangg yangg selaluuu sayangg bangeett samaa nyenyee yangg selaluuuu cintaaa bangeett sama nyenyee cantikkuuu🤗🤍
+    selamaattt ulangg tahunn yangg kee 21 tahunn sekalii lagii yaa sayaanggg🥺🤍
+    semangaattt dann selamaattt buattt mengembaraa lebihh jauhhhh dann temuinnn dirii nyenyee sendirii yaa sayanggg!!
+    loveee u moree n always love u to the moon and back till jannah and forever sayangg🤍🤍🤍
+    YEYYEYEYAAYYY DITUNGGUU PAKNE HEKSANYA YAA BEBEEE AKUU UDAA SANGATT AMATT MENUNGGU ITUU SEMWAAAA HAPPYYY🥰🥰🥰🤍🤍🤍
+    CEYAMAATT UYANGG TAUNNNN CINTANYA AKUU CANTIKKUU SAYAANGGGKUUU🤗🤗🤗🤍🤍🤍
+
+    love you more n always 💖
+    - Putro 💌
+  </div>
+</div>
+
+<script>
+  let game = 1;
+  let wrongAttempts = {};
+
+  function nextGame() {
+    document.getElementById('game' + game)?.classList.remove('active');
+    game++;
+    if (document.getElementById('game' + game)) {
+      document.getElementById('game' + game).classList.add('active');
+    } else {
+      document.getElementById('final').classList.add('active');
+    }
+  }
+
+  function showMsg(id, msg) {
+    document.getElementById('msg' + id).innerText = msg;
+  }
+
+  function checkGuess() {
+    const val = parseInt(document.getElementById('guess1').value);
+    if (val === 21) {
+      showMsg(1, "AWOWKOWOKWK IYAA SAYANGG BB BENARRR");
+      setTimeout(nextGame, 1300);
+    } else {
+      showMsg(1, "III NOO BUKANN ITUU SAYANGGKUU CLUENYA UMUR BB");
+    }
+  }
+
+  function quiz(id, correct) {
+    if (!wrongAttempts[id]) wrongAttempts[id] = 0;
+
+    if (correct) {
+      showMsg(id, "AWOWKOWOKWK IYAA SAYANGG BB BENARRR");
+      setTimeout(() => {
+        nextGame();
+        wrongAttempts[id] = 0;
+      }, 1300);
+    } else {
+      wrongAttempts[id]++;
+      if (wrongAttempts[id] === 2) {
+        showMsg(id, "APASII KENAPAAA BEBE PILIH ITUU");
+      } else {
+        showMsg(id, "III NOO BUKANN ITUU SAYANGGKUU");
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
